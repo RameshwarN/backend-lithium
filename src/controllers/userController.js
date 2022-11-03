@@ -1,3 +1,4 @@
+const userModel = require("../models/userModel")
 const UserModel= require("../models/userModel")
 
 
@@ -45,6 +46,14 @@ const dummyTwo = function (req, res) {
     else res.send("another example response")
 }
 
+const createUser2=async function(req,res,next){
+   let data=req.body
+   let serverdata=await userModel.create(data)
+   res.send(serverdata)
+}
+
+
+module.exports.createUser2=createUser2
 module.exports.createUser= createUser
 module.exports.getUsersData= getUsersData
 module.exports.basicCode= basicCode

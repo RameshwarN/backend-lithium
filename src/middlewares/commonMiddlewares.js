@@ -40,6 +40,35 @@ const myOtherMiddleware = function(req, res, next){
     next()
 }
 
+//:::::::::::::::::Assignment::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+const checkUser= function ( req, res, next) {
+    let requestHeder =req.headers.isfreeappuser
+    console.log(requestHeder)
+    if(requestHeder) {
+        next()
+    }else {
+        res.send({msg:"thr requist is missing a mandatory hedder"})
+    }    
+}
+
+const orderPurchese= function(req,res,next){
+    let requist =req.headers.isfreeappuser
+    console.log(requist)
+    if(requist) {
+        next()
+    }else {
+        res.send({msg:"error validation"})   
+    }
+       
+}  
+
+
+
+
+
+module.exports.orderPurchese=orderPurchese
+module.exports.checkUser=checkUser
 module.exports.mid1= mid1
 module.exports.mid2= mid2
 module.exports.mid3= mid3
